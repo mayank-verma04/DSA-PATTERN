@@ -255,30 +255,3 @@ public:
     }
 };
 ```
-
----
-
-# Two Pointers Pattern Summary
-
-| Pattern                | Common Problems                          |
-| ---------------------- | ---------------------------------------- |
-| Opposite Direction     | Two Sum II, Container With Most Water    |
-| Same Direction         | Remove Duplicates, Move Zeroes           |
-| Fast & Slow Pointers   | Linked List Cycle, Middle of Linked List |
-| Merge Pattern          | Merge Sorted Arrays, Merge Intervals     |
-| Sliding Window Variant | Longest Substring, Minimum Window        |
-
----
-
-# Quick Recognition Checklist
-
-If you see:
-
-- Sorted Array
-- Pair Sum
-- Triplet Sum
-- Remove Duplicates
-- Merge Arrays
-- Rearrange Elements
-- Linked List Cycle Detection
-- Palindrome Checking
