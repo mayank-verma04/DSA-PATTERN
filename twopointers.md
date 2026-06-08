@@ -282,7 +282,3 @@ If you see:
 - Rearrange Elements
 - Linked List Cycle Detection
 - Palindrome Checking
-
-Think:
-
-> ✅ Two Pointers Technique
