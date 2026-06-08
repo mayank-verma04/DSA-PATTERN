@@ -1,130 +1,243 @@
-# DSA Two Pointers
+# DSA: Two Pointers Technique
 
-When to use two pointers technique:
+## When to Use Two Pointers?
 
-- Question is of Array or Linked List
-- Data Sorted or can be sorted to make it easier to solve
-- Merge / Remove duplicates / Rearrange
-- Detect Cycle in Linked List
-- Find pairs / triplets / subarrays
+The Two Pointers technique is commonly used when:
 
-1. **Merge Two Sorted Arrays**: Given two sorted arrays, merge them into a single sorted array.
+- The problem involves Arrays or Linked Lists.
+- The data is already sorted or can be sorted.
+- You need to merge multiple sequences.
+- You need to remove duplicates.
+- You need to rearrange elements in-place.
+- You need to find pairs, triplets, or subarrays.
+- You need to detect cycles in a Linked List.
 
-Leetocode: [Merge Two Sorted Arrays](https://leetcode.com/problems/merge-sorted-array/)
-'''c++
+---
+
+# 1. Merge Two Sorted Arrays
+
+**Problem:** Given two sorted arrays, merge them into a single sorted array.
+
+**LeetCode:** https://leetcode.com/problems/merge-sorted-array/
+
+### Approach
+
+- Use two pointers `i` and `j`.
+- Compare elements from both arrays.
+- Insert the smaller element into the result array.
+- Append remaining elements after one array is exhausted.
+
+### Time Complexity
+
+- **O(m + n)**
+
+### Space Complexity
+
+- **O(m + n)**
+
+### Code
+
+```cpp
 class Solution {
 public:
-void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+    void merge(vector<int>& nums1, int m,
+               vector<int>& nums2, int n) {
 
         vector<int> result;
         int i = 0;
         int j = 0;
 
-        while(i < m && j < n) {
-            if(nums1[i] <= nums2[j]) {
+        while (i < m && j < n) {
+            if (nums1[i] <= nums2[j]) {
                 result.push_back(nums1[i]);
                 i++;
-            }
-            else {
+            } else {
                 result.push_back(nums2[j]);
                 j++;
             }
         }
 
-        while(i < m) {
+        while (i < m) {
             result.push_back(nums1[i]);
             i++;
         }
 
-        while(j < n) {
+        while (j < n) {
             result.push_back(nums2[j]);
             j++;
         }
 
-        for(int k = 0; k < m + n; k++) {
+        for (int k = 0; k < m + n; k++) {
             nums1[k] = result[k];
         }
     }
-
 };
-'''
+```
 
-2. **Remove Duplicates from Sorted Array**: Given a sorted array, remove the duplicates in-place such that each element appears only once and return the new length.
+---
 
-Leetocode: [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
-'''c++
+# 2. Remove Duplicates from Sorted Array
 
+**Problem:** Given a sorted array, remove duplicates in-place and return the new length.
+
+**LeetCode:** https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+
+### Approach
+
+- Use one pointer to track unique elements.
+- Use another pointer to scan the array.
+- Whenever a new unique element is found, place it at the next valid position.
+
+### Time Complexity
+
+- **O(n)**
+
+### Space Complexity
+
+- **O(1)**
+
+### Code
+
+```cpp
 class Solution {
 public:
-int removeDuplicates(vector<int>& nums) {
-int i=0;
-int k=1;
-int j=1;
-while(j<nums.size()){
-if(nums[j] == nums[j-1]){
-j++;
-}
-else{
-nums[i+1]=nums[j];
-i++;
-k++;
-j++;
-}
+    int removeDuplicates(vector<int>& nums) {
 
-      }
-       return k;
+        if (nums.empty())
+            return 0;
 
-}
+        int i = 0;
+        int k = 1;
+        int j = 1;
+
+        while (j < nums.size()) {
+
+            if (nums[j] == nums[j - 1]) {
+                j++;
+            } else {
+                nums[i + 1] = nums[j];
+                i++;
+                k++;
+                j++;
+            }
+        }
+
+        return k;
+    }
 };
-''' 3. Square of a Sorted Array: Given an array of integers sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
+```
 
-Leetocode: [Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/)
-'''c++
+---
+
+# 3. Squares of a Sorted Array
+
+**Problem:** Given an array sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
+
+**LeetCode:** https://leetcode.com/problems/squares-of-a-sorted-array/
+
+### Approach
+
+- Store squares of negative numbers separately.
+- Store squares of non-negative numbers separately.
+- Reverse the negative squares array.
+- Merge the two sorted arrays using two pointers.
+
+### Time Complexity
+
+- **O(n)**
+
+### Space Complexity
+
+- **O(n)**
+
+### Code
+
+```cpp
 class Solution {
 public:
-vector<int> sortedSquares(vector<int>& nums) {
-vector<int> neg, pos;
+    vector<int> sortedSquares(vector<int>& nums) {
 
-        for(int i = 0; i < nums.size(); i++) {
-            if(nums[i] < 0)
+        vector<int> neg;
+        vector<int> pos;
+
+        for (int i = 0; i < nums.size(); i++) {
+
+            if (nums[i] < 0) {
                 neg.push_back(nums[i] * nums[i]);
-            else
+            } else {
                 pos.push_back(nums[i] * nums[i]);
+            }
         }
 
         reverse(neg.begin(), neg.end());
 
-        int i = 0, j = 0;
+        int i = 0;
+        int j = 0;
+
         vector<int> result;
 
-        while(i < neg.size() && j < pos.size()) {
-            if(neg[i] <= pos[j])
-                result.push_back(neg[i++]);
-            else
-                result.push_back(pos[j++]);
+        while (i < neg.size() && j < pos.size()) {
+
+            if (neg[i] <= pos[j]) {
+                result.push_back(neg[i]);
+                i++;
+            } else {
+                result.push_back(pos[j]);
+                j++;
+            }
         }
 
-        while(i < neg.size())
-            result.push_back(neg[i++]);
+        while (i < neg.size()) {
+            result.push_back(neg[i]);
+            i++;
+        }
 
-        while(j < pos.size())
-            result.push_back(pos[j++]);
+        while (j < pos.size()) {
+            result.push_back(pos[j]);
+            j++;
+        }
 
         return result;
     }
-
 };
-''' 4. **Two Sum II - Input Array Is Sorted**: Given an array of integers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number.
+```
 
-Leetocode: [Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
-'''c++
+---
+
+# 4. Two Sum II - Input Array Is Sorted
+
+**Problem:** Given a sorted array, find two numbers such that they add up to a target value.
+
+**LeetCode:** https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
+
+### Approach
+
+- Place one pointer at the beginning.
+- Place another pointer at the end.
+- If the sum is too small, move the left pointer.
+- If the sum is too large, move the right pointer.
+- Continue until the target is found.
+
+### Time Complexity
+
+- **O(n)**
+
+### Space Complexity
+
+- **O(1)**
+
+### Code
+
+```cpp
 class Solution {
 public:
-vector<int> twoSum(vector<int>& arr, int target) {
-int left = 0;
-int right = arr.size() - 1;
+    vector<int> twoSum(vector<int>& arr, int target) {
+
+        int left = 0;
+        int right = arr.size() - 1;
 
         while (left < right) {
+
             int sum = arr[left] + arr[right];
 
             if (sum == target) {
@@ -140,5 +253,36 @@ int right = arr.size() - 1;
 
         return {};
     }
-
 };
+```
+
+---
+
+# Two Pointers Pattern Summary
+
+| Pattern                | Common Problems                          |
+| ---------------------- | ---------------------------------------- |
+| Opposite Direction     | Two Sum II, Container With Most Water    |
+| Same Direction         | Remove Duplicates, Move Zeroes           |
+| Fast & Slow Pointers   | Linked List Cycle, Middle of Linked List |
+| Merge Pattern          | Merge Sorted Arrays, Merge Intervals     |
+| Sliding Window Variant | Longest Substring, Minimum Window        |
+
+---
+
+# Quick Recognition Checklist
+
+If you see:
+
+- Sorted Array
+- Pair Sum
+- Triplet Sum
+- Remove Duplicates
+- Merge Arrays
+- Rearrange Elements
+- Linked List Cycle Detection
+- Palindrome Checking
+
+Think:
+
+> ✅ Two Pointers Technique
