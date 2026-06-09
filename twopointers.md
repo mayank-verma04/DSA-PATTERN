@@ -355,3 +355,36 @@ public:
     }
 };
 ```
+
+# 7 Triplets less than Target - Find the number of triplets in the array such that the sum of the triplet is less than a given target.
+
+**Problem:** Given an array of integers and a target integer, find the number of triplets in the array such that the sum of the triplet is less than the target.
+**GeeksforGeeks:** https://practice.geeksforgeeks.org/problems/triplet-sum-in-array-1587115621/1
+
+```cpp
+class Solution {
+  public:
+    int countTriplets(int sum, vector<int>& arr) {
+        sort(arr.begin(), arr.end());
+
+        int ans = 0;
+        int n = arr.size();
+
+        for(int i = 0; i < n - 2; i++) {
+            int left = i + 1;
+            int right = n - 1;
+            while(left < right) {
+                int curr = arr[i] + arr[left] + arr[right];
+                if(curr < sum) {
+                    ans += (right - left);
+                    left++;
+                } else {
+                    right--;
+                }
+            }
+        }
+
+        return ans;
+    }
+};
+```
