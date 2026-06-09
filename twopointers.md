@@ -255,3 +255,103 @@ public:
     }
 };
 ```
+
+# 5. Three Sum - Find all unique triplets in the array which gives the sum of zero.
+
+**Problem:** Given an array of integers, find all unique triplets in the array which gives the sum of zero.
+**LeetCode:** https://leetcode.com/problems/3sum/
+
+### Approach
+
+- Sort the array.
+- Iterate through the array and for each element, use two pointers to find pairs that sum up to the negative of the current element.
+
+### Time Complexity
+
+- **O(n^2)**
+
+### Space Complexity
+
+- **O(1)** (excluding the space for the output)
+
+```cpp
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        vector<vector<int>> result;
+        sort(nums.begin(), nums.end());
+
+        for (int i = 0; i < nums.size() - 2; i++) {
+            int left = i + 1;
+            int right = nums.size() - 1;
+
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            while (left < right) {
+                if (nums[left] + nums[right] == -1 * nums[i]) {
+                    result.push_back({nums[i], nums[left], nums[right]});
+                    left++;
+                    right--;
+                    while (left < nums.size() - 1 &&
+                           nums[left] == nums[left - 1]) {
+                        left++;
+                    }
+                    while (right > 0 && nums[right] == nums[right + 1]) {
+                        right--;
+                    }
+                } else if (nums[left] + nums[right] < -1 * nums[i]) {
+                    left++;
+                } else {
+                    right--;
+                }
+            }
+        }
+        return result;
+    }
+};
+```
+
+# 6 Close to Target Sum - Find the sum of three integers in the array that is closest to a given target.
+
+**Problem:** Given an array of integers and a target integer, find the sum of three integers in the array that is closest to the target.
+**LeetCode:** https://leetcode.com/problems/3sum-closest/
+
+```cpp
+class Solution {
+public:
+    int threeSumClosest(vector<int>& nums, int target) {
+
+        sort(nums.begin(), nums.end());
+
+        int result = nums[0] + nums[1] + nums[2];
+        int max_diff = INT_MAX;
+
+        for(int i = 0; i < nums.size() - 2; i++) {
+
+            int left = i + 1;
+            int right = nums.size() - 1;
+
+            while(left < right) {
+
+                int sum = nums[i] + nums[left] + nums[right];
+
+                if(abs(target - sum) < max_diff) {
+                    max_diff = abs(target - sum);
+                    result = sum;
+                }
+
+                if(target == sum)
+                    return sum;
+
+                if(sum < target)
+                    left++;
+                else
+                    right--;
+            }
+        }
+
+        return result;
+    }
+};
+```
