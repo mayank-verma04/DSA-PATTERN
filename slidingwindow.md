@@ -46,7 +46,7 @@ class Solution {
 # 2 Minimum size subarray sum
 
 **Problem statement**: Given an array of integers and a number k, find the minimum size of a contiguous subarray of which the sum is greater than or equal to k. If there isn't one, return 0 instead.
-**Leetcode solution**: [Minimum size subarray sum](https://leetcode.com/problems/minimum-size-subarray-sum/description/)
+**Leetcode solution**: [Minimum size subarray sum](https://leetcode.com/problems/minimum-size-subarray-sum/)
 
 ```cpp
 class Solution {
