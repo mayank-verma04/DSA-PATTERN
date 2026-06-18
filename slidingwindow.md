@@ -11,7 +11,6 @@
 # 1 Find maximum sum of a subarray of size k
 
 **Problem statement**: Given an array of integers and a number k, find the maximum sum of a subarray of size k.
-**Geeks for Geeks solution**: [Maximum sum of a subarray of size k](https://www.geeksforgeeks.org/problems/max-sum-subarray-of-size-k5313/1)
 
 ```cpp
 class Solution {
@@ -46,7 +45,6 @@ class Solution {
 # 2 Minimum size subarray sum
 
 **Problem statement**: Given an array of integers and a number k, find the minimum size of a contiguous subarray of which the sum is greater than or equal to k. If there isn't one, return 0 instead.
-**Leetcode solution**: [Minimum size subarray sum](https://leetcode.com/problems/minimum-size-subarray-sum/)
 
 ```cpp
 class Solution {
@@ -68,5 +66,41 @@ public:
         return (res==INT_MAX)?0:res;
     }
 
+};
+```
+
+# 3 Longest Substring with K Uniques
+
+**Problem statement**: Given a string s and an integer k, return the length of the longest substring of s that contains at most k distinct characters.
+
+```cpp
+class Solution {
+public:
+    int longestKSubstr(string &s, int k) {
+        int low = 0;
+        unordered_map<char, int> freq;
+        int res = -1;
+
+        for (int high = 0; high < s.size(); high++) {
+            freq[s[high]]++;
+
+            while (freq.size() > k) {
+                freq[s[low]]--;
+
+                if (freq[s[low]] == 0) {
+                    freq.erase(s[low]);
+                }
+
+                low++;
+            }
+
+            if (freq.size() == k) {
+                int length = high - low + 1;
+                res = max(res, length);
+            }
+        }
+
+        return res;
+    }
 };
 ```
