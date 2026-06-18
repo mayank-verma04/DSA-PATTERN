@@ -167,3 +167,44 @@ public:
     }
 };
 ```
+
+# 6 Longest Repeating Character Replacement
+
+**Problem statement**: You are given a string s and an integer k. You can choose any character of the string and change it to any other uppercase English character. You can perform this operation at most k times.
+Return the length of the longest substring containing the same letter you can get after performing the above operations.
+
+```cpp
+class Solution {
+public:
+
+    int findMax(vector<int>& arr) {
+        int maxi = 0;
+        for (int ch : arr) {
+            maxi = max(maxi, ch);
+        }
+        return maxi;
+    }
+
+    int characterReplacement(string s, int k) {
+        vector<int> arr(256, 0);
+
+        int low = 0, res = 0;
+
+        for (int high = 0; high < s.size(); high++) {
+            arr[s[high]]++;
+
+            int maxcount = findMax(arr);
+
+            while ((high - low + 1) - maxcount > k) {
+                arr[s[low]]--;
+                low++;
+                maxcount = findMax(arr);
+            }
+
+            res = max(res, high - low + 1);
+        }
+
+        return res;
+    }
+};
+```
