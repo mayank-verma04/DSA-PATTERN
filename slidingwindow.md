@@ -104,3 +104,65 @@ public:
     }
 };
 ```
+
+#4 Fruit Into Baskets
+**Problem statement**: You are visiting a farm that has a single row of fruit trees arranged from left to right. The trees are represented by an integer array fruits where fruits[i] is the type of fruit the ith tree produces.
+You want to collect as much fruit as possible. However, the owner has some strict rules that you must follow:
+
+- You only have two baskets, and each basket can only hold a single type of fruit.
+- Starting from any tree of your choice, you must pick exactly one fruit from every tree (including the start tree) while moving to the right. The picked fruits must fit in one of your baskets.
+- Once you reach a tree with fruit that cannot fit in your baskets, you must stop.
+
+```cpp
+class Solution {
+public:
+    int totalFruit(vector<int>& fruits) {
+        unordered_map<int, int> freq;
+        int left = 0;
+        int maxLen = 0;
+        for (int right = 0; right < fruits.size(); right++) {
+            freq[fruits[right]]++;
+            // Shrink window if distinct characters exceed 2
+            while (freq.size() > 2) {
+                freq[fruits[left]]--;
+                if (freq[fruits[left]] == 0) {
+                    freq.erase(fruits[left]);
+                }
+                left++;
+            }
+            // Update answer when exactly 2 distinct characters exist
+            maxLen = max(maxLen, right - left + 1);
+        }
+        return maxLen;
+    }
+};
+```
+
+# 5 Longest Substring Without Repeating Characters
+
+**Problem statement**: Given a string s, find the length of the longest substring without repeating characters.
+
+```cpp
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        unordered_map<char, int> freq;
+        int left = 0;
+        int maxLen = 0;
+        for (int right = 0; right < s.size(); right++) {
+            freq[s[right]]++;
+            int k = right - left + 1;
+            while (freq.size() < k) {
+                freq[s[left]]--;
+                if (freq[s[left]] == 0) {
+                    freq.erase(s[left]);
+                }
+                left++;
+                k = right - left + 1;
+            }
+            maxLen = max(maxLen, right - left + 1);
+        }
+        return maxLen;
+    }
+};
+```
