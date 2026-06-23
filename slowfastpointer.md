@@ -28,3 +28,35 @@ public:
     }
 };
 ```
+
+# 2 Retuen the starting node of the cycle in a linked list
+
+**Problem statement**: Given a linked list, return the node where the cycle begins. If there is no cycle, return null.
+
+```cpp
+class Solution {
+public:
+    ListNode *detectCycle(ListNode *head) {
+        ListNode *slow = head;
+        ListNode *fast = head;
+
+        while (fast != NULL && fast->next != NULL) {
+            slow = slow->next;
+            fast = fast->next->next;
+
+            if (slow == fast) {
+                slow = head;
+
+                while (slow != fast) {
+                    slow = slow->next;
+                    fast = fast->next;
+                }
+
+                return slow;  // start of cycle
+            }
+        }
+
+        return NULL; // no cycle
+    }
+};
+```
