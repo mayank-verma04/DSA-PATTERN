@@ -10,8 +10,6 @@
 
 # 1 Find maximum sum of a subarray of size k
 
-**Problem statement**: Given an array of integers and a number k, find the maximum sum of a subarray of size k.
-
 ```cpp
 class Solution {
   public:
@@ -44,8 +42,6 @@ class Solution {
 
 # 2 Minimum size subarray sum
 
-**Problem statement**: Given an array of integers and a number k, find the minimum size of a contiguous subarray of which the sum is greater than or equal to k. If there isn't one, return 0 instead.
-
 ```cpp
 class Solution {
 public:
@@ -70,8 +66,6 @@ public:
 ```
 
 # 3 Longest Substring with K Uniques
-
-**Problem statement**: Given a string s and an integer k, return the length of the longest substring of s that contains at most k distinct characters.
 
 ```cpp
 class Solution {
@@ -107,13 +101,6 @@ public:
 
 # 4 Fruit Into Baskets
 
-**Problem statement**: You are visiting a farm that has a single row of fruit trees arranged from left to right. The trees are represented by an integer array fruits where fruits[i] is the type of fruit the ith tree produces.
-You want to collect as much fruit as possible. However, the owner has some strict rules that you must follow:
-
-- You only have two baskets, and each basket can only hold a single type of fruit.
-- Starting from any tree of your choice, you must pick exactly one fruit from every tree (including the start tree) while moving to the right. The picked fruits must fit in one of your baskets.
-- Once you reach a tree with fruit that cannot fit in your baskets, you must stop.
-
 ```cpp
 class Solution {
 public:
@@ -141,8 +128,6 @@ public:
 
 # 5 Longest Substring Without Repeating Characters
 
-**Problem statement**: Given a string s, find the length of the longest substring without repeating characters.
-
 ```cpp
 class Solution {
 public:
@@ -169,9 +154,6 @@ public:
 ```
 
 # 6 Longest Repeating Character Replacement
-
-**Problem statement**: You are given a string s and an integer k. You can choose any character of the string and change it to any other uppercase English character. You can perform this operation at most k times.
-Return the length of the longest substring containing the same letter you can get after performing the above operations.
 
 ```cpp
 class Solution {
