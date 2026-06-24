@@ -1,4 +1,4 @@
-# DSA - Slow and Fast Pointers
+# DSA: Slow and Fast Pointers
 
 When to use the slow and fast pointer technique?
 
