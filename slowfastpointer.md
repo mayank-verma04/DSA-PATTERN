@@ -8,8 +8,6 @@ When to use the slow and fast pointer technique?
 
 # 1 Detecting a cycle in a linked list
 
-**Problem statement**: Given a linked list, determine if it has a cycle in it.
-
 ```cpp
 class Solution {
 public:
@@ -29,9 +27,7 @@ public:
 };
 ```
 
-# 2 Retuen the starting node of the cycle in a linked list
-
-**Problem statement**: Given a linked list, return the node where the cycle begins. If there is no cycle, return null.
+# 2 Return the starting node of the cycle in a linked list
 
 ```cpp
 class Solution {
@@ -63,8 +59,6 @@ public:
 
 # 3 Finding the middle node of a linked list
 
-**Problem statement**: Given a non-empty, singly linked list with head node head, return a middle node of linked list. If there are two middle nodes, return the second middle node.
-
 ```cpp
 /**
  * Definition for singly-linked list.
@@ -92,8 +86,6 @@ public:
 
 # 4 Find duplicate number in an array
 
-**Problem statement**: Given an array nums containing n + 1 integers where each integer is in the range [1, n] inclusive. There is only one repeated number in nums, return this repeated number.
-
 ```cpp
 class Solution {
 public:
@@ -120,8 +112,6 @@ public:
 ```
 
 # 5 Happy Number
-
-**Problem statement**: Write an algorithm to determine if a number n is happy. A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle that does not include 1. Those numbers for which this process ends in 1 are happy numbers.
 
 ```cpp
 class Solution {
