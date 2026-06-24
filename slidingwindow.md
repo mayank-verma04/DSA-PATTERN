@@ -1,4 +1,4 @@
-# When to use a sliding window
+# DSA: Sliding Window
 
 - Apply to strings or arrays.
 - Question may ask for a contiguous subarray or substring.
@@ -8,7 +8,7 @@
 - Fixed size sliding window
 - Variable size sliding window
 
-# 1 Find maximum sum of a subarray of size k
+1. Find maximum sum of a subarray of size k
 
 ```cpp
 class Solution {
@@ -40,7 +40,7 @@ class Solution {
 };
 ```
 
-# 2 Minimum size subarray sum
+2. Find minimum size subarray sum
 
 ```cpp
 class Solution {
@@ -65,7 +65,7 @@ public:
 };
 ```
 
-# 3 Longest Substring with K Uniques
+3. Longest Substring with K Uniques
 
 ```cpp
 class Solution {
@@ -99,7 +99,7 @@ public:
 };
 ```
 
-# 4 Fruit Into Baskets
+4. Fruit Into Baskets
 
 ```cpp
 class Solution {
@@ -126,7 +126,7 @@ public:
 };
 ```
 
-# 5 Longest Substring Without Repeating Characters
+5. Longest Substring Without Repeating Characters
 
 ```cpp
 class Solution {
@@ -153,7 +153,7 @@ public:
 };
 ```
 
-# 6 Longest Repeating Character Replacement
+6. Longest Repeating Character Replacement
 
 ```cpp
 class Solution {
