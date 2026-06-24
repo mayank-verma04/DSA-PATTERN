@@ -16,27 +16,6 @@ The Two Pointers technique is commonly used when:
 
 # 1. Merge Two Sorted Arrays
 
-**Problem:** Given two sorted arrays, merge them into a single sorted array.
-
-**LeetCode:** https://leetcode.com/problems/merge-sorted-array/
-
-### Approach
-
-- Use two pointers `i` and `j`.
-- Compare elements from both arrays.
-- Insert the smaller element into the result array.
-- Append remaining elements after one array is exhausted.
-
-### Time Complexity
-
-- **O(m + n)**
-
-### Space Complexity
-
-- **O(m + n)**
-
-### Code
-
 ```cpp
 class Solution {
 public:
@@ -78,26 +57,6 @@ public:
 
 # 2. Remove Duplicates from Sorted Array
 
-**Problem:** Given a sorted array, remove duplicates in-place and return the new length.
-
-**LeetCode:** https://leetcode.com/problems/remove-duplicates-from-sorted-array/
-
-### Approach
-
-- Use one pointer to track unique elements.
-- Use another pointer to scan the array.
-- Whenever a new unique element is found, place it at the next valid position.
-
-### Time Complexity
-
-- **O(n)**
-
-### Space Complexity
-
-- **O(1)**
-
-### Code
-
 ```cpp
 class Solution {
 public:
@@ -130,27 +89,6 @@ public:
 ---
 
 # 3. Squares of a Sorted Array
-
-**Problem:** Given an array sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
-
-**LeetCode:** https://leetcode.com/problems/squares-of-a-sorted-array/
-
-### Approach
-
-- Store squares of negative numbers separately.
-- Store squares of non-negative numbers separately.
-- Reverse the negative squares array.
-- Merge the two sorted arrays using two pointers.
-
-### Time Complexity
-
-- **O(n)**
-
-### Space Complexity
-
-- **O(n)**
-
-### Code
 
 ```cpp
 class Solution {
@@ -206,28 +144,6 @@ public:
 
 # 4. Two Sum II - Input Array Is Sorted
 
-**Problem:** Given a sorted array, find two numbers such that they add up to a target value.
-
-**LeetCode:** https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
-
-### Approach
-
-- Place one pointer at the beginning.
-- Place another pointer at the end.
-- If the sum is too small, move the left pointer.
-- If the sum is too large, move the right pointer.
-- Continue until the target is found.
-
-### Time Complexity
-
-- **O(n)**
-
-### Space Complexity
-
-- **O(1)**
-
-### Code
-
 ```cpp
 class Solution {
 public:
@@ -257,22 +173,6 @@ public:
 ```
 
 # 5. Three Sum - Find all unique triplets in the array which gives the sum of zero.
-
-**Problem:** Given an array of integers, find all unique triplets in the array which gives the sum of zero.
-**LeetCode:** https://leetcode.com/problems/3sum/
-
-### Approach
-
-- Sort the array.
-- Iterate through the array and for each element, use two pointers to find pairs that sum up to the negative of the current element.
-
-### Time Complexity
-
-- **O(n^2)**
-
-### Space Complexity
-
-- **O(1)** (excluding the space for the output)
 
 ```cpp
 class Solution {
@@ -313,9 +213,6 @@ public:
 ```
 
 # 6 Close to Target Sum - Find the sum of three integers in the array that is closest to a given target.
-
-**Problem:** Given an array of integers and a target integer, find the sum of three integers in the array that is closest to the target.
-**LeetCode:** https://leetcode.com/problems/3sum-closest/
 
 ```cpp
 class Solution {
@@ -358,9 +255,6 @@ public:
 
 # 7 Triplets less than Target - Find the number of triplets in the array such that the sum of the triplet is less than a given target.
 
-**Problem:** Given an array of integers and a target integer, find the number of triplets in the array such that the sum of the triplet is less than the target.
-**GeeksforGeeks:** https://practice.geeksforgeeks.org/problems/triplet-sum-in-array-1587115621/1
-
 ```cpp
 class Solution {
   public:
@@ -390,9 +284,6 @@ class Solution {
 ```
 
 # 8 Sort Colors - Given an array with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.
-
-**Problem:** Given an array with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.
-**LeetCode:** https://leetcode.com/problems/sort-colors/
 
 ```cpp
 class Solution {
